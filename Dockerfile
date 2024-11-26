@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:24.04
 LABEL authors="dklein"
 ARG RUNNER_VERSION="2.321.0"
 
