@@ -1,24 +1,14 @@
 version: '3'
 
 services:
-  dind:
-    image: docker:dind
-    environment:
-      DOCKER_TLS_CERTDIR: ""
-    privileged: true
-    volumes:
-      - /var/lib/docker
-    expose:
-      - 2375
-      - 2376
-
   kleinDocsRunner:
     image: docker.dariusklein.nl/runner:latest
     restart: always
-    links:
-      - dind
+    privileged: true
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
     environment:
       REPO: ${KLEIN_DOCS_REPO}
       TOKEN: ${KLEIN_DOCS_TOKEN}
-      DOCKER_HOST: http://docker-in-docker:2375
-
