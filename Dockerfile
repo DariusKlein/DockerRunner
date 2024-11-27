@@ -1,6 +1,6 @@
 FROM debian:stable-slim
 LABEL authors="dklein"
-ARG RUNNER_VERSION="2.320.0"
+ARG RUNNER_VERSION="2.321.0"
 
 # Prevents installdependencies.sh from prompting the user and blocking the image creation
 ARG DEBIAN_FRONTEND=noninteractive
