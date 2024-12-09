@@ -11,4 +11,28 @@ services:
         target: /var/run/docker.sock
     environment:
       REPO: ${KLEIN_DOCS_REPO}
-      TOKEN: ${KLEIN_DOCS_TOKEN}
+      TOKEN: ${KLEINPROJECTS_TOKEN}
+
+  WazuhNotifierRunner:
+    image: docker.dariusklein.nl/runner:latest
+    restart: always
+    privileged: true
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    environment:
+      REPO: ${WAZUH_NOTIFY_REPO}
+      TOKEN: ${KLEINPROJECTS_TOKEN}
+
+  PortfolioRunner:
+        image: docker.dariusklein.nl/runner:latest
+        restart: always
+        privileged: true
+        volumes:
+          - type: bind
+            source: /var/run/docker.sock
+            target: /var/run/docker.sock
+        environment:
+          REPO: ${PORTFOLIO_REPO}
+          TOKEN: ${DARIUS_TOKEN}
